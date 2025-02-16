@@ -32,9 +32,16 @@ async def cool(ctx):
     if ctx.invoked_subcommand is None:
         await ctx.send(f'No, {ctx.subcommand_passed} is not cool')
 
-@bot.command(description='For when you wanna settle the score some other way')
-async def choose(ctx, *choices: str):
-    """Chooses between multiple choices."""
-    await ctx.send(random.choice(choices))
-    
+@bot.command()
+async def help(ctx):
+    help_text = """
+    **Comandos disponibles:**
+
+    **$hello** - Saluda al bot.
+    **$heh [count]** - Envía una cadena de "he" repetida la cantidad que determines (por defecto es 5).
+    **$add [numero1] [numero2]** - Suma dos números.
+    **$cool [nombre]** - Dice si un usuario es "cool".
+    """
+    await ctx.send(help_text)
+            
 bot.run("")
